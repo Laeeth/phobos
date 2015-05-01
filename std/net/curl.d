@@ -907,7 +907,7 @@ private auto _decodeContent(T)(ubyte[] content, string encoding)
 }
 
 alias KeepTerminator = Flag!"keepTerminator";
-/+
+/++
 struct ByLineBuffer(Char)
 {
     bool linePresent;
@@ -1699,6 +1699,11 @@ private mixin template Protocol()
         p.curl.set(CurlOption.proxyport, cast(long) port);
     }
 
+    @property void setPort(ushort port)
+    {
+        p.curl.set(CurlOption.proxyport, cast(long) port);
+    }
+    
     /// Type of proxy
     alias CurlProxy = etc.c.curl.CurlProxy;
 
